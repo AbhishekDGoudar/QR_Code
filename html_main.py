@@ -190,20 +190,20 @@ index = """
         autoFlip();
 
         const images = [
-            "memes/meme_1.png",
-            "memes/meme_2.png",
-            "memes/meme_3.png",
-            "memes/meme_4.png",
-            "memes/meme_5.png",
-            "memes/meme_6.png",
-            "memes/meme_7.png",
-            "memes/meme_8.png",
-            "memes/meme_10.png",
-            "memes/meme_11.png",
-            "memes/meme_12.png",
-            "memes/meme_13.png",
-            "memes/meme_14.png",
-            "memes/meme_15.png"
+            "meme_1.png",
+            "meme_2.png",
+            "meme_3.png",
+            "meme_4.png",
+            "meme_5.png",
+            "meme_6.png",
+            "meme_7.png",
+            "meme_8.png",
+            "meme_10.png",
+            "meme_11.png",
+            "meme_12.png",
+            "meme_13.png",
+            "meme_14.png",
+            "meme_15.png"
         ];
 
         // Function to select a random image
