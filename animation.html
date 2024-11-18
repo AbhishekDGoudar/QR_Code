@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2x2 Grid with Embedded HTML Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-gap: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .grid-item {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .grid-item iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .grid-item button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .grid-item button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="gridContainer"></div>
+
+    <script>
+        // Variable to control the size of the grid (2 x 2 grid)
+        let n = 2; // 2x2 grid
+
+        const gridContainer = document.getElementById('gridContainer');
+
+        // Example embedded HTML preview URLs (could be YouTube videos, websites, etc.)
+        const embeds = [
+            "https://www.youtube.com/embed/dQw4w9WgXcQ", // YouTube video
+            "https://www.youtube.com/embed/tgbNymZ7vqY", // Another YouTube video
+            "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default", // W3Schools HTML Editor
+            "https://www.codepen.io" // CodePen homepage
+        ];
+
+        // Function to create the grid
+        function createGrid() {
+            gridContainer.innerHTML = ''; // Clear the grid before re-building
+
+            // Set grid columns dynamically based on n (2 for a 2x2 grid)
+            gridContainer.style.setProperty('grid-template-columns', `repeat(${n}, 1fr)`);
+
+            for (let i = 0; i < n * n; i++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
+
+                // Create iframe for HTML preview
+                const iframe = document.createElement('iframe');
+                iframe.src = embeds[i % embeds.length]; // Use embeds cyclically
+                iframe.title = `Embed ${i + 1}`;
+
+                // Button with clickable text
+                const button = document.createElement('button');
+                button.textContent = `Click Me ${i + 1}`;
+                button.onclick = () => alert(`You clicked item ${i + 1}!`);
+
+                // Append iframe and button to the grid item
+                gridItem.appendChild(iframe);
+                gridItem.appendChild(button);
+
+                // Add the grid item to the container
+                gridContainer.appendChild(gridItem);
+            }
+        }
+
+        // Create the grid on page load
+        createGrid();
+    </script>
+</body>
+</html>
